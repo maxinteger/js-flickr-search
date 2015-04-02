@@ -1,6 +1,9 @@
-(function(angular){
+(function($, angular){
     'use strict';
     angular.module('SearchApp.components.scrollUp', [])
+    /**
+     * Scroll up directive
+     */
         .directive('scrollUp', function(){
             return {
                 restrict: 'A',
@@ -17,10 +20,13 @@
 
                     elm.on('click', scrollUp);
 
+                    // clean event handler
                     scope.$on('$destroy', function(){
-                        elm.off(scrollUp);
+                        if (elm && elm.off){
+                            elm.off(scrollUp);
+                        }
                     });
                 }
             };
         });
-})(angular);
+})(jQuery, angular);

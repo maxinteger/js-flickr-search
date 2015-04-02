@@ -2,9 +2,15 @@
     'use strict';
 
     angular.module('SearchApp.photosCtrl', ['SearchApp.photosService', 'mgcrea.ngStrap'])
+    /**
+     * Photo search controller
+     */
         .controller('PhotoSearchCtrl', function($scope, photoSearchService, $modal){
             var self = this;
 
+            /**
+             * Get photos
+             */
             function getPhotos(){
                 photoSearchService.search({
                     text: self.searchText,
@@ -21,6 +27,9 @@
             self.searchText = '';
             self.page = 1;
 
+            /**
+             * Start a new search;
+             */
             self.search = function search(){
                 self.page = 1;
                 getPhotos();
@@ -34,7 +43,9 @@
                 return self.result && self.page > 1;
             };
 
-
+            /**
+             * Jump to the previous page
+             */
             self.prevPage = function prevPage(){
                 if (self.hasPrevPage()){
                     self.page -= 1;
@@ -59,6 +70,11 @@
                 }
             };
 
+            /**
+             * Open the photo details modal
+             *
+             * @param {{id:number}}photo     Flickr photo descriptor, that contains the photo id
+             */
             self.showDetails = function(photo) {
                 photoSearchService.getDetails(photo.id).then(function(res){
                     $modal({scope: _.extend($scope.$new(true), {

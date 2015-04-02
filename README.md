@@ -2,6 +2,9 @@
 
 
 ##Features
+- Search in Flickr photos
+- Simple pagination
+- Detail view
 - No NPM dependencies
 
 ##Install
@@ -13,7 +16,7 @@
     node server.js
 
 ##Open in browser
- `http://localhost:3000` or use this link: [Simple Address Book](http://localhost:3000)
+ [`http://localhost:3000`](http://localhost:3000)
 
 ##Development
 Tested with newest Firefox and Chrome on Linux

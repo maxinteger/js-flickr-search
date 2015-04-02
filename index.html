@@ -63,7 +63,7 @@
                    href=""
                    title="{{ photo.title }}"
                    tabindex="1"
-                   style="background-image: url({{photo|FlickrUrl:'q'}})"
+                   style="background-image: url({{photo|flickrUrl:'q'}})"
                    ng-click="photosCtrl.showDetails(photo)">
                     <span class="btn btn-default" role="button" title="Show details">Show details</span>
                 </a>
@@ -103,20 +103,22 @@
     </div>
 </div>
 
-<script src="bower_components/lodash/lodash.js"></script>
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-<script src="bower_components/angular-animate/angular-animate.js"></script>
-<script src="bower_components/angular-resource/angular-resource.js"></script>
-<script src="bower_components/angular-strap/dist/angular-strap.js"></script>
-<script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
+<div class="scripts">
+    <script src="bower_components/lodash/lodash.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-strap/dist/angular-strap.js"></script>
+    <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
 
-<script src="searchApp/searchApp.js"></script>
-<script src="searchApp/photos/photos.js"></script>
-<script src="searchApp/photos/photos.ctrl.js"></script>
-<script src="searchApp/photos/photos.filter.js"></script>
-<script src="searchApp/photos/photos.service.js"></script>
-<script src="searchApp/components/scrollUp.js"></script>
+    <script src="searchApp/searchApp.js"></script>
+    <script src="searchApp/photos/photos.js"></script>
+    <script src="searchApp/photos/photos.ctrl.js"></script>
+    <script src="searchApp/photos/photos.filter.js"></script>
+    <script src="searchApp/photos/photos.service.js"></script>
+    <script src="searchApp/components/scrollUp.js"></script>
+</div>
 </body>
 </html>

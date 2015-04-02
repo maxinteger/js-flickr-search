@@ -3,6 +3,9 @@
 
     angular.module('SearchApp.photosService', ['ngResource'])
         .constant('FLICKR_API_URL', 'https://api.flickr.com/services/rest/')
+    /**
+     * Flickr photo API service
+     */
         .provider('photoSearchService', function(){
             this.APIKey = '';
 
