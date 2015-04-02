@@ -1,0 +1,32 @@
+{
+  "name": "js-flickr-search",
+  "version": "1.0.0",
+  "authors": [
+    "Vadasz Laszlo <maxinteger@gmail.com>"
+  ],
+  "description": "Flickr search app",
+  "main": "index.html",
+  "keywords": [
+    "flickr",
+    "api",
+    "search"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.3.15",
+    "angular-resource": "~1.3.15",
+    "angular-strap": "~2.2.1",
+    "lodash": "~3.6.0",
+    "bootstrap": "~3.3.4",
+    "angular-animate": "~1.3.15",
+    "angular-sanitize": "~1.3.15"
+  }
+}

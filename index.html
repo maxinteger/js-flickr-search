@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en" ng-app="SearchApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Flickr search app</title>
+
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<div id="main-wrapper" ng-controller="PhotoSearchCtrl as photosCtrl">
+    <div class="container search-field-container">
+        <!-- Search field -->
+        <div class="col-lg-12">
+            <h1 class="page-header text-center">Flickr search</h1>
+            <form class="form" ng-submit="photosCtrl.search()">
+                <div class="form-group">
+                    <label class="sr-only" for="id-search-input">Search on flickr</label>
+                    <input type="text"
+                           id="id-search-input"
+                           class="form-control input-lg"
+                           autofocus
+                           placeholder="Search text ..."
+                           ng-model="photosCtrl.searchText"
+                           ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"
+                           ng-change="photosCtrl.search()"
+                           ng-minlength="3">
+                </div>
+                <div class="text-center">
+                    <button type="submit"
+                            tabindex="1"
+                            title="Search"
+                            class="btn btn-lg btn-primary btn-wide">
+                        Search
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container data-list" ng-if="photosCtrl.result.photo.length" ng-cloak>
+        <!-- Photos -->
+        <h6 class="page-header text-muted">Found <b>{{ photosCtrl.result.total }}</b> picture(s)</h6>
+        <div class="row clearfix">
+            <div class="col-lg-2 col-md-4 col-xs-6 thumb"
+                 ng-repeat="photo in photosCtrl.result.photo">
+                <a class="thumbnail photo"
+                   href=""
+                   title="{{ photo.title }}"
+                   tabindex="1"
+                   style="background-image: url({{photo|FlickrUrl:'q'}})"
+                   ng-click="photosCtrl.showDetails(photo)">
+                    <span class="btn btn-default" role="button" title="Show details">Show details</span>
+                </a>
+            </div>
+        </div>
+        <hr/>
+
+        <!-- Pager -->
+        <div class="row">
+            <nav>
+                <ul class="pager">
+                    <li class="previous" ng-if="photosCtrl.hasPrevPage()">
+                        <a href="#"
+                           scroll-up
+                           tabindex="1"
+                           title="Next page {{ photosCtrl.page - 1 }}"
+                           ng-click="photosCtrl.prevPage()">
+                            <span aria-hidden="true">&larr;</span> Previous
+                        </a>
+                    </li>
+
+                    <li>{{ photosCtrl.page }} / {{ photosCtrl.result.pages }}</li>
+
+                    <li class="next" ng-if="photosCtrl.hasNextPage()">
+                        <a href="#"
+                           scroll-up
+                           tabindex="1"
+                           role="button"
+                           title="Next page {{ photosCtrl.page + 1 }}"
+                           ng-click="photosCtrl.nextPage()">
+                            Next <span aria-hidden="true">&rarr;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<script src="bower_components/lodash/lodash.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-strap/dist/angular-strap.js"></script>
+<script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
+
+<script src="searchApp/searchApp.js"></script>
+<script src="searchApp/photos/photos.js"></script>
+<script src="searchApp/photos/photos.ctrl.js"></script>
+<script src="searchApp/photos/photos.filter.js"></script>
+<script src="searchApp/photos/photos.service.js"></script>
+<script src="searchApp/components/scrollUp.js"></script>
+</body>
+</html>

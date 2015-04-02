@@ -1,0 +1,49 @@
+<div class="modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"  ng-click="$hide()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">{{ details.photo.title._content }} <small>photo details</small></h4>
+            </div>
+            <div class="modal-body">
+                <img ng-src="{{ details.photo|FlickrUrl }}" class="img-responsive img-thumbnail big-photo" alt="{{ details.photo.title._content }}">
+
+                <hr/>
+                <dl>
+                    <dt>Author:</dt>
+                    <dd>{{ details.photo.owner.realname || details.photo.owner.username }}</dd>
+
+                    <dt>Description:</dt>
+                    <dd ng-bind-html="details.photo.description._content"></dd>
+
+                    <dt>Posted:</dt>
+                    <dd>{{ (details.photo.dates.posted * 1000) | date:'medium' }}</dd>
+
+                    <dt>Tags:</dt>
+                    <dd class="clearfix">
+                        <span ng-repeat="tag in details.photo.tags.tag" class="label label-primary">{{ tag.raw }}</span>
+                    </dd>
+
+                    <dt>Media type:</dt>
+                    <dd>{{ details.photo.media }}</dd>
+
+                    <dt>Links</dt>
+                    <dd>
+                        <ul class="list-unstyled">
+                            <li ng-repeat="url in details.photo.urls.url" >
+                                <a ng-href="{{ url._content }}" target="_blank">{{ url.type }}</a>
+                            </li>
+                        </ul>
+                    </dd>
+                </dl>
+
+                <button type="button" class="btn btn-default btn-sm" ng-model="model.toggleDetails" bs-checkbox>Show/hide all details</button>
+
+                <pre ng-if="model.toggleDetails">{{ details.photo|json }}</pre>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="$hide()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
